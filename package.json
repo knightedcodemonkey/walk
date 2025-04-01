@@ -1,0 +1,75 @@
+{
+  "name": "@knighted/walk",
+  "version": "1.0.0-alpha.0",
+  "description": "Walk an oxc-parser AST with nodes typed correctly.",
+  "main": "dist",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/walk.d.ts",
+        "default": "./dist/walk.js"
+      },
+      "require": {
+        "types": "./dist/walk.d.cts",
+        "default": "./dist/walk.cjs"
+      },
+      "default": "./dist/walk.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/walk.d.cts",
+  "engines": {
+    "node": ">=20"
+  },
+  "engineStrict": true,
+  "scripts": {
+    "build:dual": "babel-dual-package src --no-cjs-dir --extensions .ts",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "npm run build:types && npm run build:dual",
+    "lint": "eslint src",
+    "prepack": "npm run build",
+    "prettier": "prettier -w ."
+  },
+  "keywords": [
+    "walk",
+    "oxc-parser",
+    "ast",
+    "node",
+    "types"
+  ],
+  "files": [
+    "dist"
+  ],
+  "author": "KCM <knightedcodemonkey@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/knightedcodemonkey/walk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/knightedcodemonkey/walk/issues"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "printWidth": 90,
+    "semi": false,
+    "singleQuote": true
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.23.0",
+    "@types/estree": "^1.0.7",
+    "@types/node": "^22.13.17",
+    "babel-dual-package": "^1.1.4",
+    "eslint-plugin-n": "^17.17.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.29.0"
+  },
+  "peerDependencies": {
+    "oxc-parser": ">=0.61.2"
+  },
+  "dependencies": {
+    "estree-walker": "^3.0.3"
+  }
+}
