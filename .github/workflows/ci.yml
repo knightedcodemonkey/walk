@@ -29,5 +29,11 @@ jobs:
           path: npm-debug.log
       - name: Lint
         run: npm run lint
+      - name: Test
+        run: npm test
+      - name: Report Coverage
+        uses: codecov/codecov-action@v5.4.0
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
       - name: Pack
         run: npm pack
