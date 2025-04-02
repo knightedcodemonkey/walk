@@ -1,4 +1,4 @@
-import { walk as _walk, type SyncHandler } from 'estree-walker'
+import { type SyncHandler } from 'estree-walker'
 import type { Program, Node } from 'oxc-parser'
 import type { Program as ESTreeProgram, Node as ESTreeNode } from 'estree'
 
@@ -14,7 +14,10 @@ type WalkOptions = {
   leave?: WalkerCallback
 }
 
-const walk = (ast: Program | Node, opts: WalkOptions) => {
+const walk = async (ast: Program | Node, opts: WalkOptions) => {
+  // `estree-walker` is an ESM-only module, so need to use dynamic import to support dual builds.
+  const { walk: _walk } = await import('estree-walker')
+
   return _walk(ast as ESTreeProgram | ESTreeNode, {
     enter(node, parent, prop, index) {
       if (opts.enter) {
