@@ -9,6 +9,17 @@ type WalkerCallback = (
   key: Parameters<SyncHandler>['2'],
   index: Parameters<SyncHandler>['3'],
 ) => void
+type AncestorWalkerCallback = (
+  this: ThisParameterType<SyncHandler>,
+  node: Node,
+  ancestors: Node[],
+  key: Parameters<SyncHandler>['2'],
+  index: Parameters<SyncHandler>['3'],
+) => void
+type AncestorWalkOptions = {
+  enter?: AncestorWalkerCallback
+  leave?: AncestorWalkerCallback
+}
 type WalkOptions = {
   enter?: WalkerCallback
   leave?: WalkerCallback
@@ -31,5 +42,33 @@ const walk = async (ast: Program | Node, opts: WalkOptions) => {
     },
   })
 }
+const ancestorWalk = async (ast: Program | Node, opts: AncestorWalkOptions) => {
+  const { walk: _walk } = await import('estree-walker')
+  const ancestors: Node[] = []
+  let isNew = false
 
-export { walk }
+  return _walk(ast as ESTreeProgram | ESTreeNode, {
+    enter(node, parent, prop, index) {
+      isNew = node !== ancestors[ancestors.length - 1]
+
+      if (isNew) {
+        ancestors.push(node as Node)
+      }
+
+      if (opts.enter) {
+        opts.enter.call(this, node as Node, ancestors, prop, index)
+      }
+    },
+    leave(node, parent, prop, index) {
+      if (opts.leave) {
+        opts.leave.call(this, node as Node, ancestors, prop, index)
+      }
+
+      if (isNew) {
+        ancestors.pop()
+      }
+    },
+  })
+}
+
+export { walk, ancestorWalk }
