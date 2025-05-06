@@ -1,4 +1,4 @@
-import { type SyncHandler, type AsyncHandler } from 'estree-walker'
+import type { SyncHandler, AsyncHandler } from 'estree-walker'
 import type { Program, Node } from 'oxc-parser'
 import type { Program as ESTreeProgram, Node as ESTreeNode } from 'estree'
 
