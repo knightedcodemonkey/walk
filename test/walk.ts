@@ -138,25 +138,25 @@ describe('walk', () => {
       'Identifier',
       'JSXIdentifier',
       'JSXOpeningElement',
+      'JSXText',
       'JSXIdentifier',
       'JSXClosingElement',
-      'JSXText',
       'JSXElement',
       'ArrowFunctionExpression',
       'VariableDeclarator',
       'VariableDeclaration',
       'JSXOpeningFragment',
-      'JSXClosingFragment',
       'JSXIdentifier',
       'JSXOpeningElement',
       'JSXElement',
+      'JSXClosingFragment',
       'JSXFragment',
       'ReturnStatement',
       'BlockStatement',
       'FunctionExpression',
       'VariableDeclarator',
       'VariableDeclaration',
-      'Program',
+      'Program'
     ])
   })
 })

@@ -1,6 +1,6 @@
 {
   "name": "@knighted/walk",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0",
   "description": "Walk an oxc-parser AST with nodes typed correctly.",
   "main": "dist",
   "type": "module",
