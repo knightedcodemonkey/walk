@@ -126,7 +126,7 @@ describe('walk', () => {
           }
         }
       },
-      async leave(node, ancestors) {
+      async leave(node) {
         nodesLeft.push(node.type)
       },
     })

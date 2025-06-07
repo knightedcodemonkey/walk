@@ -15,6 +15,15 @@ export default tseslint.config(
           allowModules: ['estree'],
         },
       ],
+      'n/no-unsupported-features/node-builtins': [
+        'error',
+        {
+          ignores: [
+            // No longer experimental with v22.0.0
+            'test.describe',
+          ],
+        },
+      ],
     },
   },
 )
