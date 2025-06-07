@@ -156,7 +156,7 @@ describe('walk', () => {
       'FunctionExpression',
       'VariableDeclarator',
       'VariableDeclaration',
-      'Program'
+      'Program',
     ])
   })
 })
