@@ -1,6 +1,6 @@
 {
   "name": "@knighted/walk",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0",
   "description": "Walk an oxc-parser AST with nodes typed correctly.",
   "main": "dist",
   "type": "module",
@@ -27,7 +27,7 @@
     "build:dual": "babel-dual-package src --no-cjs-dir --extensions .ts",
     "build:types": "tsc --emitDeclarationOnly",
     "build": "npm run build:types && npm run build:dual",
-    "lint": "eslint src",
+    "lint": "eslint src test",
     "prepack": "npm run build",
     "prettier": "prettier -w .",
     "test": "c8 --reporter=text --reporter=text-summary --reporter=lcov tsx --test --test-reporter=spec test/walk.ts"

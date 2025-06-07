@@ -126,7 +126,7 @@ describe('walk', () => {
           }
         }
       },
-      async leave(node, ancestors) {
+      async leave(node) {
         nodesLeft.push(node.type)
       },
     })
@@ -138,18 +138,18 @@ describe('walk', () => {
       'Identifier',
       'JSXIdentifier',
       'JSXOpeningElement',
+      'JSXText',
       'JSXIdentifier',
       'JSXClosingElement',
-      'JSXText',
       'JSXElement',
       'ArrowFunctionExpression',
       'VariableDeclarator',
       'VariableDeclaration',
       'JSXOpeningFragment',
-      'JSXClosingFragment',
       'JSXIdentifier',
       'JSXOpeningElement',
       'JSXElement',
+      'JSXClosingFragment',
       'JSXFragment',
       'ReturnStatement',
       'BlockStatement',
